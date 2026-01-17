@@ -11,24 +11,34 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class App {
+  userName = signal("Nitin Pathak") 
   userData = signal({
-    name: "Nitin Pathak",
-    age: 23,
+    college: "IIIT Bhagalpur",
     email: "nitin@gmail.com"
   })
 
-  updateUserData(key:string, val:string){
-    this.userData.update((item) => ({...item, [key]: val}));
-    // if(key == 'name'){
-    //   this.userData.update((item) => ({...item, name: val}));
-    // }
-    // if(key == 'age'){
-    //   this.userData.update((item) => ({...item, age: parseInt(val)}));
-    // }
-    // if(key == 'email'){
-    //   this.userData.update((item) => ({...item, email: val}));
-    // }
+  get uName(){
+    return this.userName();
+  }
+
+  set uName(val:string){
+    this.userName.set(val);
+  }
+
+  get userCollege(){
+    return this.userData().college
+  }
+
+  set userCollege(val){
+    this.userData.update((item) => ({...item, college:val}))
+  }
+
+  get userEmail(){
+    return this.userData().email
+  }
+
+  set userEmail(val){
+    this.userData.update((item) => ({...item, email:val}))
   }
 }
-
 
