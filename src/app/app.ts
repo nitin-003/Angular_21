@@ -12,12 +12,11 @@ import { AdminData } from './admin-data/admin-data';
 })
 
 export class App {
-  users = signal(["Nitin", "Ram", "Sam", "Peter"])
-  usersDetail = signal([
-    {id: 1, name: "Nitin", email: "nitin@test.com"},
-    {id: 2, name: "Ram", email: "ram@test.com"},
-    {id: 3, name: "Sam", email: "sam@test.com"},
-    {id: 4, name: "Peter", email: "peter@test.com"}
-  ])
+  status = signal("notStarted")
+
+  handleSwitch(event:Event){
+    const target = event.target as HTMLSelectElement
+    this.status.set(target.value);
+  }
 }
 

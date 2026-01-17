@@ -1,27 +1,34 @@
-<h1>for loop | Control Flow Statement</h1>
-<div>
-  <ul>
-    @for(user of users(); track user){
-    <li>{{user}}</li>
-    }
-  </ul>
-  <hr />
+<h1>Switch | Control Flow Statement</h1>
 
-  <ul>
-    @for(user of usersDetail(); track user.id){
-    <li [style.backgroundColor]="$odd ? '#ccc' : '#ddd'"><span>{{$index+1}} {{user.name + " " + user.email}}
-        @if($first){<span style="color: red">Admin</span>}
-        @if($last){<span style="color: orange">Guest</span>}
-      </span>
-      <span>@if($count==$index+1){ <span><b> Total Users </b> {{$count}}</span>}</span>
-    </li>
-    }
-  </ul>
-</div>
+<select (change)="handleSwitch($event)" name="" id="">
+  <option value="notStarted">Not Started</option>
+  <option value="loading">Loading in Progress</option>
+  <option value="success">Success</option>
+  <option value="error">Error or Other</option>
+</select>
+
+<br>
+<br>
+
+@switch(status()){
+  @case('notStarted'){
+    <span>No update yet</span>
+  }
+  @case('loading'){
+    <span style="color: orange">Loading in progress...</span>
+  }
+  @case('success'){
+    <span style="color: green">Success</span>
+  }
+  @default{
+    <span style="color: red">Error</span>
+  }
+}
 
 <h1 class="heading"><button class="btn btn-primary">Login</button> Style in Angular</h1>
 
 <router-outlet></router-outlet>
 <app-user-data></app-user-data>
 <app-admin-data></app-admin-data>
+
 
