@@ -12,18 +12,12 @@ import { AdminData } from './admin-data/admin-data';
 })
 
 export class App {
-  isLogin = signal(false)
-  show = signal(true)
-  status = signal('error')
-
-  handleLogin(status: boolean){
-    this.isLogin.set(status)
-  }
-
-  handleStatus(event:Event){
-    let target = event.target as HTMLSelectElement;
-    this.status.set(target.value)
-  }
+  users = signal(["Nitin", "Ram", "Sam", "Peter"])
+  usersDetail = signal([
+    {id: 1, name: "Nitin", email: "nitin@test.com"},
+    {id: 2, name: "Ram", email: "ram@test.com"},
+    {id: 3, name: "Sam", email: "sam@test.com"},
+    {id: 4, name: "Peter", email: "peter@test.com"}
+  ])
 }
-
 
