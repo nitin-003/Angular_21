@@ -1,34 +1,23 @@
-<h1>Switch | Control Flow Statement</h1>
+<!-- <h1>{{name()}}</h1>
+<input type="text" [value]="name()" (input)="name.set($event.target.value)">
+<hr>
 
-<select (change)="handleSwitch($event)" name="" id="">
-  <option value="notStarted">Not Started</option>
-  <option value="loading">Loading in Progress</option>
-  <option value="success">Success</option>
-  <option value="error">Error or Other</option>
-</select>
+<h1>{{age}}</h1>
+<input type="text" [(ngModel)]="age"> -->
+<!-- <input type="text" [ngModel]="age" (ngModelChange)="age = $event"> -->
 
-<br>
-<br>
+<h1>{{userData().name}}</h1>
+<input type="text" [value]="userData().name" (input)="updateUserData('name', $event.target.value)">
+<hr>
 
-@switch(status()){
-  @case('notStarted'){
-    <span>No update yet</span>
-  }
-  @case('loading'){
-    <span style="color: orange">Loading in progress...</span>
-  }
-  @case('success'){
-    <span style="color: green">Success</span>
-  }
-  @default{
-    <span style="color: red">Error</span>
-  }
-}
+<h1>{{userData().age}}</h1>
+<input type="text" [value]="userData().age" (input)="updateUserData('age', $event.target.value)">
+<hr>
 
-<h1 class="heading"><button class="btn btn-primary">Login</button> Style in Angular</h1>
+
+<h1>{{userData().email}}</h1>
+<input type="text" [value]="userData().email" (input)="updateUserData('email', $event.target.value)">
 
 <router-outlet></router-outlet>
-<app-user-data></app-user-data>
-<app-admin-data></app-admin-data>
 
 
