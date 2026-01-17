@@ -1,15 +1,19 @@
-<h1>{{uName}}</h1>
-<input type="text" [(ngModel)]="uName">
-
-<hr>
-
-<h2>{{userCollege  }}</h2>
-<input type="text" [(ngModel)]="userCollege">
-
-<hr>
-
-<h2>{{userEmail  }}</h2>
-<input type="text" [(ngModel)]="userEmail">
+<h1>Todo List</h1>
+<input type="text" [value]="title()" (input)="title.set($event.target.value)" placeholder="Enter task...">
+<button (click)="addTask()">Add Task</button>
+<ul>
+  @for(task of tasks(); track task.id){
+  <li class="task-list">
+    <span>{{$index+1}} </span>
+    <span> {{task.title}}</span>
+    <span><button (click)="deleteTask(task.id)">Delete</button></span>
+  </li>
+  }
+  @empty {
+  <span>No task found</span>
+  }
+</ul>
 
 <router-outlet></router-outlet>
+
 

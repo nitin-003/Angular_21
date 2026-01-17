@@ -1,44 +1,33 @@
-import { Component, computed, effect, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true,              
+  standalone: true,
   imports: [RouterOutlet, FormsModule],
   templateUrl: './app.html',
-  styleUrls: ['./app.css']        
+  styleUrls: ['./app.css']
 })
 
-export class App {
-  userName = signal("Nitin Pathak") 
-  userData = signal({
-    college: "IIIT Bhagalpur",
-    email: "nitin@gmail.com"
-  })
+export class App{
+  tasks = signal([
+    { id: 0, title: "team lunch", completed: false }
+  ])
 
-  get uName(){
-    return this.userName();
+  title = signal('')
+
+  addTask(){
+    if(this.title()){
+      this.tasks.update((item) => (
+        [...item, { id: this.tasks().length, title: this.title(), completed: false }]
+      ))
+      this.title.set('')
+    }
   }
 
-  set uName(val:string){
-    this.userName.set(val);
-  }
-
-  get userCollege(){
-    return this.userData().college
-  }
-
-  set userCollege(val){
-    this.userData.update((item) => ({...item, college:val}))
-  }
-
-  get userEmail(){
-    return this.userData().email
-  }
-
-  set userEmail(val){
-    this.userData.update((item) => ({...item, email:val}))
+  deleteTask(id: number){
+    this.tasks.update((tasks) => tasks.filter(task => task.id != id))
   }
 }
 
