@@ -12,12 +12,21 @@ import { Child } from './child/child';
 
 export class App{
   // userName = signal("Nitin Pathak")
-  
+
   users = signal(["Nitin", "Ram", "Sam", "Peter"])
   newUser = signal('')
+  selectUserName = signal('')
 
   addNewUser(){
     this.users.update((data) => ([...data, this.newUser()]))
+  }
+
+  selectedUser(name: string){
+    this.selectUserName.set(name)
+  }
+
+  deleteUser(name: string){
+    this.users.update((data) => data.filter(item => item != name))
   }
 }
 
