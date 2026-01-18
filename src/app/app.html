@@ -1,12 +1,5 @@
-<h1>{{title() | trimText | uppercase}}</h1>
-<h2>{{name() | trimText:5}}</h2>
-<h2>{{name() | trimText: 10}}</h2>
+<app-header></app-header>
 
-<hr>
-<h2>{{amount() | currencyConvertor | currency: 'INR'}}</h2>
-<h2>{{amount() | currencyConvertor:20 | currency: 'INR'}}</h2>
-<h2>{{amount() | currencyConvertor:30 | currency: 'INR'}}</h2>
 
 <router-outlet></router-outlet>
-
  
