@@ -1,21 +1,12 @@
-<h1>{{title() | uppercase}}</h1>
-<h1>{{title() | titlecase}}</h1>
-
-<hr/>
-<h1>{{name() | titlecase}}</h1>
-<input type="text" (input)="name.set($event.target.value)">
-
-<hr/>
-<!-- <h3>I bought a {{mobile | titlecase}} mobile on {{date | date}} in Rs. {{amount | currency}}</h3> -->
-<h1>{{amount | currency:'USD'}}</h1>
-<hr>
-<h1>{{today | date}}</h1>
-<h1>{{today | date:'mm'}}</h1>
-<h1>{{today | date:'dd'}}</h1>
-<h1>{{today | date:'yy'}}</h1>
-<h1>{{today | date:'full'}}</h1>
+<h1>{{title() | trimText | uppercase}}</h1>
+<h2>{{name() | trimText:5}}</h2>
+<h2>{{name() | trimText: 10}}</h2>
 
 <hr>
-<h2>{{user() | json}}</h2>
+<h2>{{amount() | currencyConvertor | currency: 'INR'}}</h2>
+<h2>{{amount() | currencyConvertor:20 | currency: 'INR'}}</h2>
+<h2>{{amount() | currencyConvertor:30 | currency: 'INR'}}</h2>
 
 <router-outlet></router-outlet>
+
+ 

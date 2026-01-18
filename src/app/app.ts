@@ -1,23 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TrimTextPipe } from './custom-pipe/trim-text-pipe';
+import { CurrencyConvertorPipe } from './custom-pipe/currency-convertor-pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, TrimTextPipe, CurrencyConvertorPipe],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 
 export class App{
-  title = signal("code step by step")
-  name = signal("")
-
-  amount = 10000
-  date = "24-08-2025"
-  mobile = "Samsung"
-  today = new Date()
-  user = signal({name: 'Nitin', age: 29, email: 'nitin@gmail.com'})
+  title = signal("Nitin Pathak")
+  name = signal("My Name is Nitin Pathak")
+  amount = signal(20)
 }
+
 
