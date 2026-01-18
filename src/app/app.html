@@ -1,17 +1,9 @@
-<!-- <app-child [userName]="userName()"></app-child> -->
+<h1></h1>
+<h1>Global Store with Signal</h1>
+<app-display-count></app-display-count>
 
-<h3>Selected User: {{selectUserName()}}</h3>
-<br>
-<input type="text" (input)="newUser.set($event.target.value)" placeholder="Enter new user name...">
-<button (click)="addNewUser()">Add New User</button>
-
-@for(user of users(); track user){
-  <app-child [userName]="user" 
-    (selectedUser)="selectedUser($event)"
-    (deleteUser)="deleteUser($event)"
-  >
-  </app-child>
-}
-
+<hr>
+<app-control-count></app-control-count>
 <router-outlet></router-outlet>
+
 
