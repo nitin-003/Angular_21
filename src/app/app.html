@@ -1,18 +1,40 @@
-<h1>Todo List</h1>
-<input type="text" [value]="title()" (input)="title.set($event.target.value)" placeholder="Enter task...">
-<button (click)="addTask()">Add Task</button>
+<h1>*ngFor Directives in Angular</h1>
 <ul>
-  @for(task of tasks(); track task.id){
-  <li class="task-list">
-    <span>{{$index+1}} </span>
-    <span> {{task.title}}</span>
-    <span><button (click)="deleteTask(task.id)">Delete</button></span>
+  <li *ngFor="let student of students">
+    {{student}}
   </li>
-  }
-  @empty {
-  <span>No task found</span>
-  }
 </ul>
+
+<ul>
+  <li *ngFor="let student of studentsData">
+    {{student.name}}, {{student.age}}, {{student.email}}
+  </li>
+</ul>
+
+<h1>*ngIf Directives in Angular</h1>
+<div *ngIf="login; else elseBlock">
+  <a href="">Logout</a>
+</div>
+<ng-template #elseBlock>
+  <a href="">Login</a>
+</ng-template>
+
+<h1>*ngSwitch Directives in Angular</h1>
+<button (click)="changeColor('red')">Red Color</button>
+<button (click)="changeColor('green')">Green Color</button>
+<button (click)="changeColor('yellow')">Yellow Color</button>
+<button (click)="changeColor('blue')">Blue Color</button>
+<button (click)="changeColor('pink')">Pink Color</button>
+
+<br>
+<div [ngSwitch]="color">
+  <h1 *ngSwitchCase="'red'" style="background-color: red;">Red Color</h1>
+  <h1 *ngSwitchCase="'green'" style="background-color: green;">Green Color</h1>
+  <h1 *ngSwitchCase="'yellow'" style="background-color: yellow;">Yellow Color</h1>
+  <h1 *ngSwitchCase="'blue'" style="background-color: blue;">Blue Color</h1>
+  <h1 *ngSwitchCase="'pink'" style="background-color: pink;">Pink Color</h1>
+  <h1 *ngSwitchDefault>No Color Match</h1>
+</div>
 
 <router-outlet></router-outlet>
 

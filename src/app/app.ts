@@ -1,33 +1,29 @@
-import { Component, computed, effect, signal, WritableSignal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, NgFor, NgIf, NgSwitch, NgSwitchCase, NgSwitchDefault],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 
 export class App{
-  tasks = signal([
-    { id: 0, title: "team lunch", completed: false }
-  ])
+  students = ["Nitin", "Ram", "Sam", "Peter"]
+  studentsData = [
+    {name: "Nitin", age: 23, email: "nitin@gmail.com"},
+    {name: "Ram", age: 28, email: "ram@gmail.com"},
+    {name: "Sam", age: 30, email: "sam@gmail.com"},
+    {name: "Peter", age: 32, email: "peter@gmail.com"}
+  ]
 
-  title = signal('')
+  login = true;
 
-  addTask(){
-    if(this.title()){
-      this.tasks.update((item) => (
-        [...item, { id: this.tasks().length, title: this.title(), completed: false }]
-      ))
-      this.title.set('')
-    }
-  }
-
-  deleteTask(id: number){
-    this.tasks.update((tasks) => tasks.filter(task => task.id != id))
+  color = "black";
+  changeColor(color: string){
+    this.color = color;
   }
 }
 
