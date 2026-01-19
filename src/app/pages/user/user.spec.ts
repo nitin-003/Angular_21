@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageNotFound } from './page-not-found';
+import { User } from './user';
 
-describe('PageNotFound', () => {
-  let component: PageNotFound;
-  let fixture: ComponentFixture<PageNotFound>;
+describe('User', () => {
+  let component: User;
+  let fixture: ComponentFixture<User>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PageNotFound]
+      imports: [User]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PageNotFound);
+    fixture = TestBed.createComponent(User);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
