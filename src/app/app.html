@@ -1,5 +1,15 @@
-<button (click)="loadUserDetails()">Load user details</button>
-<ng-container #container></ng-container>
+<h1>Reactive Form</h1>
+<ul>
+    <li>Email: {{email.value}}</li>
+    <li>Password: {{password.value}}</li>
+</ul>
+
+<input type="text" placeholder="Enter email" [formControl]="email" />
+<br><br>
+<input type="password" placeholder="Enter password" [formControl]="password" />
+<br><br>
+<button (click)="login()">Login</button>
+<button (click)="reset()">Reset</button>
 
 <router-outlet></router-outlet>
  
