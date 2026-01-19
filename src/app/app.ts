@@ -1,41 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, signal } from '@angular/core';
+import { email, form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, ReactiveFormsModule],
+  imports: [RouterOutlet, CommonModule, FormField],
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
 
 export class App{
-  loginForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.maxLength(5)]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  loginModel = signal({email:'', password:''})
+  loginForm = form(this.loginModel, (f) => {
+    required(f.email, {message: "Please enter email address"})
+    minLength(f.email, 5, {message: "Please enter a valid email"})
+    email(f.email, {message: "Please enter valid email address"})
+    required(f.password, {message: "Please enter password"})
+    minLength(f.password, 5, {message: "Please enter valid password"})
+    maxLength(f.password, 15, {message: "Please enter valid password"})
   })
 
-  get name(){
-    return this.loginForm.get("name")
-  }
-
-  get email(){
-     return this.loginForm.get("email")
-  }
-
-  get password(){
-     return this.loginForm.get("password")
-  }
-
-  handleProfile(){
-    console.log(this.loginForm.value)
+  login(){
+    console.log(this.loginForm.email().value())
+    console.log(this.loginForm.password().value())
   }
 
   reset(){
-    this.loginForm.setValue({ name:'', password:'', email:'' })
+    this.loginForm.email().value.set('')
+    this.loginForm.password().value.set('')
   }
 }
 
