@@ -7,6 +7,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
+
 export class Home {
   constructor(public route:Router){}
   userData = signal({name: "Nitin", age: 29, id: 1})
@@ -14,6 +15,9 @@ export class Home {
   goToProfile(){
     this.route.navigate(['profile'], {queryParams: {id: 10, name:'peter', age: 40}})
   }
-}
 
+  goToAbout(){
+    this.route.navigate(['about', 'peter', '22'])
+  }
+}
 

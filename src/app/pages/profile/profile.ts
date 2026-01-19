@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
+
 export class Profile {
   name = signal('');
   id = signal(0)
