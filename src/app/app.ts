@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -12,16 +12,30 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class App{
-  email = new FormControl("")
-  password = new FormControl("")
+  loginForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.maxLength(5)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  })
 
-  login(){
-    console.log(this.email.value, this.password.value)
+  get name(){
+    return this.loginForm.get("name")
+  }
+
+  get email(){
+     return this.loginForm.get("email")
+  }
+
+  get password(){
+     return this.loginForm.get("password")
+  }
+
+  handleProfile(){
+    console.log(this.loginForm.value)
   }
 
   reset(){
-    this.email.setValue("")
-    this.password.setValue("")
+    this.loginForm.setValue({ name:'', password:'', email:'' })
   }
 }
 
