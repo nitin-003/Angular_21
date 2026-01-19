@@ -1,27 +1,35 @@
-<h1>Signal Forms</h1>
+<h1>Template Driven Form</h1>
 
-<input type="text" placeholder="Enter Email" [formField]="loginForm.email">
-@if(loginForm.email().touched() && loginForm.email().invalid()){
-    <ul>
-        @for(error of loginForm.email().errors(); track error){
-            <li>{{error.message}}</li>
-        }
-    </ul>
-}
-<br><br>
+<ul *ngIf="userDetails">
+  <li>Name: {{ userDetails.username }}</li>
+  <li>Password: {{ userDetails.password }}</li>
+  <li>Gender: {{ userDetails.gender }}</li>
+  <li>Range: {{ userDetails.range }}</li>
+  <li>Bio: {{ userDetails.userBio }}</li>
+</ul>
 
-<input type="text" placeholder="Enter Password" [formField]="loginForm.password">
-@if(loginForm.password().touched() && loginForm.password().invalid()){
-    <ul>
-        @for(error of loginForm.password().errors(); track error){
-            <li>{{error.message}}</li>
-        }
-    </ul>
-}
-<br><br>
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+  <input type="text" name="username" placeholder="Enter your name" ngModel required/>
+  <br/><br/>
 
-<button [disabled]="loginForm().invalid()" (click)="login()">Login</button>
-<button (click)="reset()">Reset</button>
+  <input type="password" name="password" placeholder="Enter your password" ngModel required/>
+  <br/><br/>
+
+  <select name="gender" ngModel required>
+    <option value="">Select Gender</option>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+  </select>
+  <br/><br/>
+
+  <input type="range" name="range" ngModel/>
+  <br/><br/>
+
+  <input type="text" name="userBio" placeholder="Enter your bio" ngModel/>
+  <br/><br/>
+
+  <button type="submit" [disabled]="userForm.invalid">Add User</button>
+</form>
 
 <router-outlet></router-outlet>
- 
+
