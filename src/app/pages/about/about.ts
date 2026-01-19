@@ -14,7 +14,6 @@ export class About {
 
   ngOnInit(){
     this.route.params.subscribe((params) => {
-      console.log(params)
       this.userName.set(params['name'])
       this.age.set(params['age'])
     })
