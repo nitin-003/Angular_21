@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Products } from './services/products';
+import { Product } from './services/productDataType';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { Products } from './services/products';
 })
 
 export class App {
-  productData:any = signal("")
+  productData = signal<Product[] | undefined>(undefined)
   constructor(private productService:Products){
 
   }
