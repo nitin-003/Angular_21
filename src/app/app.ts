@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ProductService } from './services/product-service';
+import { Products } from './services/products';
 
 @Component({
   selector: 'app-root',
@@ -12,16 +12,15 @@ import { ProductService } from './services/product-service';
 })
 
 export class App {
-  productData:any = signal("");
-  constructor(private productService:ProductService){}
-  // ngOnInit(){
-  //   let data = this.productService.getProducts();
-  //   this.productData.set(data);
-  // }
+  productData:any = signal("")
+  constructor(private productService:Products){
 
-  loadData(){
-    let data = this.productService.getProducts();
-    this.productData.set(data);
+  }
+  
+  ngOnInit(){
+    this.productService.getProducts().subscribe((data) => {
+      this.productData.set(data.products)
+    })
   }
 }
 

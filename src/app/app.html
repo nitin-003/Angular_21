@@ -1,11 +1,14 @@
-<h1>Products</h1>
+<h1>Product List</h1>
 
-<button (click)="loadData()">Load Data</button>
 <ul>
     @for(product of productData(); track product.id){
-        <li>{{product.id}}. {{product.name}}, {{product.price}}</li>
+        <ul class="product-ul">
+            <li>Name: {{product.title}}</li>
+            <li>Price: {{product.price}}</li>
+            <li>Category: {{product.category}}</li>
+        </ul>
     }
 </ul>
 
-
 <router-outlet></router-outlet>
+
